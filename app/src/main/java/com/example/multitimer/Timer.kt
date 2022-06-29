@@ -128,7 +128,7 @@ class Timer(timerNumber: Int,_timeM: Int,_timeS: Int,name: String,_timersPanel: 
                             alarm.start()
                         }
 
-
+                if(timeM>0||timeS>0)
                 Thread.sleep(1_000)
             }
             timeM = M
