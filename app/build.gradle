@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.RazorBladeStudio.MultiTimer"
         minSdk 29
-        targetSdk 32
+        targetSdk 29
         versionCode 1
         versionName "1.0"
 
@@ -35,6 +35,7 @@ android {
             dataBinding true
         }
     }
+    buildToolsVersion '32.0.0'
 }
 
 dependencies {
