@@ -2,6 +2,7 @@ package com.example.multitimer
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Debug
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,13 +11,15 @@ import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+import androidx.core.text.set
+import androidx.core.view.children
 import androidx.core.view.marginTop
 import androidx.core.view.updatePadding
 import androidx.navigation.ui.AppBarConfiguration
 import com.example.multitimer.databinding.ActivityMainBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import java.io.Console
+import java.io.*
 import java.sql.Time
 
 
@@ -26,8 +29,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     companion object {
         var timerL =  mutableListOf<Timer>()
+        var data_Timer = mutableListOf<Data_Timer>()
         var activeTimerNumber = 0
-        fun  deleteTimer() {}
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,10 +55,43 @@ class MainActivity : AppCompatActivity() {
         var AddTimerTimeS = findViewById<EditText>(R.id.AddTimerTimeS)
         var removeTimerCancel = findViewById<Button>(R.id.removeTimerCancel)
         var removeTimerConfirm = findViewById<Button>(R.id.removeTimerConfirm)
-        //setContentView(binding.root)
-        timerL += Timer(timerL.lastIndex+1,15,0,"timer1",timersPanel,modify_Timer_window,this)
-        timerL += Timer(timerL.lastIndex+1,11,0,"timer2",timersPanel,modify_Timer_window,this)
-        timerL += Timer(timerL.lastIndex+1,11,0,"timer3",timersPanel,modify_Timer_window,this)
+
+
+        val path: File = applicationContext.filesDir
+        val file = File(path,"data.txt")
+
+        //file.delete()
+        //Log.i("info",file.toString())
+        //val t = test(path)
+        if (!file.exists())
+        {
+            //Log.i("info",file.exists().toString())
+
+            AddTimer(timersPanel,modify_Timer_window,15,0,"timer1")
+            AddTimer(timersPanel,modify_Timer_window,11,0,"timer2")
+            AddTimer(timersPanel,modify_Timer_window,11,0,"timer3")
+
+            //file.createNewFile()
+            data_Timer += Data_Timer("timer1","15","0")
+            data_Timer += Data_Timer("timer2","11","0")
+            data_Timer += Data_Timer("timer3","11","0")
+            Data_Timer.SaveTimer(path, data_Timer)
+
+
+        }else
+        {
+
+            Data_Timer.ReadTimer(path)
+
+
+                //Log.i("info", "size "+data_Timer.size.toString())
+            for (a in data_Timer)
+            {
+
+                AddTimer(timersPanel,modify_Timer_window,a.TimerTimeMin.toInt(),a.TimerTimeSec.toInt(),a.TimerName)
+            }
+
+        }
 
 
 
@@ -71,10 +107,16 @@ class MainActivity : AppCompatActivity() {
         }
         confirm_edit_window.setOnClickListener()
         {
+            if(editName.text.toString()=="") editName.setText(timerL[activeTimerNumber].tname)
+
             timerL[activeTimerNumber].SetTimer(timerL[activeTimerNumber].time_display,timerL[activeTimerNumber].time_name_display,
                 editTimeM.text.toString(), editTimeS.text.toString(), editName.text.toString(),this)
             modify_Timer_window.visibility = View.INVISIBLE
             addButton.visibility = View.VISIBLE
+            data_Timer[activeTimerNumber].TimerName = editName.text.toString()
+            data_Timer[activeTimerNumber].TimerTimeMin = editTimeM.text.toString()
+            data_Timer[activeTimerNumber].TimerTimeSec = editTimeS.text.toString()
+            Data_Timer.SaveTimer(path, data_Timer)
         }
 
 
@@ -92,14 +134,19 @@ class MainActivity : AppCompatActivity() {
         add_new_timer_button.setOnClickListener()
         {
             addButton.visibility = View.VISIBLE
-            var view = layoutInflater.inflate(R.layout.timer,null)
-            timersPanel.addView(view)
             addTimer_Window.visibility = View.INVISIBLE
-            timerL += Timer(timerL.lastIndex+1,Timer.StringNullCheck(AddTimerTimeM.text.toString()).toInt(),Timer.StringNullCheck(AddTimerTimeS.text.toString()).toInt(),AddTimerTimeName.text.toString(),timersPanel,modify_Timer_window,this)
+
+            var minute = Timer.StringNullCheck(AddTimerTimeM.text.toString()).toInt()
+            var second = Timer.StringNullCheck(AddTimerTimeS.text.toString()).toInt()
+            var name = AddTimerTimeName.text.toString()
+            AddTimer(timersPanel,modify_Timer_window,minute,second,name)
+            data_Timer += Data_Timer(name,minute.toString(),second.toString())
+            Data_Timer.SaveTimer(path, data_Timer)
         }
 
         addButton.setOnClickListener()
         {
+
             addButton.visibility = View.INVISIBLE
             addTimer_Window.visibility = View.VISIBLE
         }
@@ -112,9 +159,9 @@ class MainActivity : AppCompatActivity() {
         removeTimerConfirm.setOnClickListener()
         {
             findViewById<TableRow>(R.id.deleteTimerWindow).visibility = View.INVISIBLE
-            timerL.removeAt(activeTimerNumber)
-            var View = timersPanel.getChildAt(activeTimerNumber) as TableRow
-            timersPanel.removeView(View)
+            RemoveTimer(timersPanel, activeTimerNumber)
+            data_Timer.removeAt(activeTimerNumber)
+            Data_Timer.SaveTimer(path, data_Timer)
             //Log.i("info","${timerL.lastIndex} ")
             for (i in timerL.indices)
             {
@@ -127,6 +174,19 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    fun RemoveTimer(timersPanel: TableLayout,number: Int)
+    {
+        timerL.removeAt(number)
+        var View = timersPanel.getChildAt(number) as TableRow
+        timersPanel.removeView(View)
+    }
+
+    fun AddTimer(timersPanel: TableLayout, modify_Timer_window: TableRow,minute: Int,second: Int, name: String)
+    {
+        var view = layoutInflater.inflate(R.layout.timer,null)
+        timersPanel.addView(view)
+        timerL += Timer(timerL.lastIndex+1,minute,second,name,timersPanel,modify_Timer_window,this)
+    }
 
 }
 
