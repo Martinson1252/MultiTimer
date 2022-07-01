@@ -1,8 +1,5 @@
-package com.example.multitimer
-import android.content.Context
+package com.RazorBladeStudio.MultiTimer
 import android.util.Log
-import android.widget.TableLayout
-import android.widget.TableRow
 import java.io.*
 import kotlin.collections.*
 

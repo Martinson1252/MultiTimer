@@ -1,6 +1,5 @@
-package com.example.multitimer
+package com.RazorBladeStudio.MultiTimer
 
-import android.content.Context
 import android.util.Log
 import java.io.*
 

@@ -1,26 +1,13 @@
-package com.example.multitimer
+package com.RazorBladeStudio.MultiTimer
 
-import android.content.Context
 import android.os.Bundle
-import android.os.Debug
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
-import androidx.core.text.set
-import androidx.core.view.children
-import androidx.core.view.marginTop
-import androidx.core.view.updatePadding
 import androidx.navigation.ui.AppBarConfiguration
-import com.example.multitimer.databinding.ActivityMainBinding
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
+import com.RazorBladeStudio.MultiTimer.databinding.ActivityMainBinding
 import java.io.*
-import java.sql.Time
 
 
 class MainActivity : AppCompatActivity() {

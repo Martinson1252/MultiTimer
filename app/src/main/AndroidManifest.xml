@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.multitimer">
+    package="com.RazorBladeStudio.MultiTimer">
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,7 @@
         android:screenOrientation="portrait"
         android:theme="@style/Theme.MultiTimer">
         <activity
-            android:name=".MainActivity"
+            android:name="com.RazorBladeStudio.MultiTimer.MainActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>

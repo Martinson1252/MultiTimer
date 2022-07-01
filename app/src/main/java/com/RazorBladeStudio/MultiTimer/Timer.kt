@@ -1,25 +1,10 @@
-package com.example.multitimer
+package com.RazorBladeStudio.MultiTimer
 
-import android.annotation.SuppressLint
-import android.app.Activity
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.content.Context
 import android.graphics.Color
-import android.os.Debug
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.view.get
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
-import java.io.Console
-import android.content.Intent
-import android.icu.util.Calendar
 import android.media.MediaPlayer
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 

@@ -1,4 +1,4 @@
-package com.example.multitimer
+package com.RazorBladeStudio.MultiTimer
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

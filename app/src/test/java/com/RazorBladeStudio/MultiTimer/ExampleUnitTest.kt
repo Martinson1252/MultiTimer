@@ -1,4 +1,4 @@
-package com.example.multitimer
+package com.RazorBladeStudio.MultiTimer
 
 import org.junit.Test
 
