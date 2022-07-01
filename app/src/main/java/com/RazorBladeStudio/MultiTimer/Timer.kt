@@ -17,7 +17,7 @@ class Timer(timerNumber: Int,_timeM: Int,_timeS: Int,name: String,_timersPanel: 
     var buttonState = MainButtonState.START
     var wholeTimer = LinearLayout(context)
     var timerContent = LinearLayout(context)
-    var start_button = Button(context)
+    var start_button = ImageButton(context)
     var edit_button = ImageButton(context)
     var delete_button = ImageButton(context)
     var tname = ""
@@ -37,7 +37,7 @@ class Timer(timerNumber: Int,_timeM: Int,_timeS: Int,name: String,_timersPanel: 
         val mod_Wind = mod_wind
         val context = context
         timerContent = wholeTimer.getChildAt(1) as LinearLayout
-        start_button = timerContent.getChildAt(4) as Button
+        start_button = timerContent.getChildAt(4) as ImageButton
         edit_button = (wholeTimer.getChildAt(2) as LinearLayout).getChildAt(0) as ImageButton
         delete_button = (wholeTimer.getChildAt(0) as LinearLayout).getChildAt(0) as ImageButton
         time_name_display = timerContent.getChildAt(0) as TextView
@@ -83,7 +83,8 @@ class Timer(timerNumber: Int,_timeM: Int,_timeS: Int,name: String,_timersPanel: 
     {
         M = timeM
         S = timeS
-        SetSTARTbutton(MainButtonState.STOP)
+        start_button.setImageResource(R.drawable.stop_button)
+        buttonState = MainButtonState.STOP
 
         var alarm: MediaPlayer
         alarm = MediaPlayer.create(context,R.raw.mixkit_alarm_buzzer_992)
@@ -128,14 +129,11 @@ class Timer(timerNumber: Int,_timeM: Int,_timeS: Int,name: String,_timersPanel: 
     fun Stoptimer()
     {
         time_display.setTextColor(Color.parseColor("#FFFFFFFF"))
-        SetSTARTbutton(MainButtonState.START)
+        start_button.setImageResource(R.drawable.start_button)
+        buttonState = MainButtonState.START
     }
 
-    fun SetSTARTbutton(state: MainButtonState)
-    {
-        buttonState = state
-        start_button.text = state.toString()
-    }
+
 
     fun SetTimer(time_display: TextView, time_name_display: TextView, timeM: String, timeS: String, name_: String, context: Context)
     {

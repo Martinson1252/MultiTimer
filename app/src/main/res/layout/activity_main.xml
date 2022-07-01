@@ -13,19 +13,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#292929"
-        android:clipToPadding="false"
+        android:clipToPadding="true"
         android:fillViewport="true"
         android:gravity="center"
         android:orientation="vertical">
+
 
         <TableLayout
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:baselineAligned="false"/>
+            android:baselineAligned="false">
+            <!--begin of timer-->
+
+
+            <!--</TableLayout>-->
+            <!--end of timer-->
+        </TableLayout>
+
+
     </ScrollView>
 
     <!-- Add timer window -->
+
 
     <TableRow
         android:id="@+id/add_timer_window"

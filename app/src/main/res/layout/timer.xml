@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:minWidth="180dp"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:minHeight="160dp"
@@ -68,16 +69,27 @@
             android:layout_width="match_parent"
             android:layout_height="5dp" />
 
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="fill_horizontal"
+            android:background="@drawable/round_button"
+            android:src="@drawable/start_button"
+            app:tint="#FFFFFF" />
+
         <Button
-            style="@drawable/round_button"
+            style="@drawable/start_button_selector"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/round_button"
+            android:background="@drawable/start_button_selector"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            android:text="Start"
-            app:iconGravity="top" />
+
+            android:visibility="gone"
+            app:iconGravity="top"
+            tools:visibility="gone" />
 
     </LinearLayout>
 
