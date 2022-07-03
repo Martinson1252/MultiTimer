@@ -4,6 +4,7 @@ The application allows user to launch multiple timers at the same time.
 It has basic functions for adding, removing and modifying a timer.  
 In addition, it saves the current list of timers to a file that is read when the application is started.  
 Thanks to this, the data after modification by the user is retained.  
+  
  ---
 
 
