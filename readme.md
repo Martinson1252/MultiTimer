@@ -1,3 +1,4 @@
+## MultiTimer ##  
 Small app created with Kotlin and Android Studio.  
 User can launch multiple timers at the same time.  
 The application allows user to launch multiple timers at the same time.  
