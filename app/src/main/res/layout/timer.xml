@@ -5,10 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:minWidth="180dp"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
+    android:minWidth="180dp"
     android:minHeight="160dp"
+    android:outlineProvider="none"
     android:visibility="visible"
     tools:ignore="ExtraText"
     tools:visibility="visible">
@@ -36,6 +37,7 @@
         android:layout_weight="0"
         android:background="#800C0909"
         android:gravity="center_vertical"
+        android:minWidth="140dp"
         android:orientation="vertical">
 
         <TextView
@@ -70,7 +72,6 @@
             android:layout_height="5dp" />
 
         <ImageButton
-            android:id="@+id/imageButton"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="fill_horizontal"

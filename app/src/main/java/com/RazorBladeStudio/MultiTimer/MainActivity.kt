@@ -18,10 +18,11 @@ class MainActivity : AppCompatActivity() {
         var timerL =  mutableListOf<Timer>()
         var data_Timer = mutableListOf<Data_Timer>()
         var activeTimerNumber = 0
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        var clock = Thread()
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -95,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         confirm_edit_window.setOnClickListener()
         {
             if(editName.text.toString()=="") editName.setText(timerL[activeTimerNumber].tname)
-
+            if(editTimeS.text.toString().toInt()>60) editTimeS.setText("60")
             timerL[activeTimerNumber].SetTimer(timerL[activeTimerNumber].time_display,timerL[activeTimerNumber].time_name_display,
                 editTimeM.text.toString(), editTimeS.text.toString(), editName.text.toString(),this)
             modify_Timer_window.visibility = View.INVISIBLE
@@ -110,7 +111,7 @@ class MainActivity : AppCompatActivity() {
 
         //var t = TableRow(this)
         //mainPanel.addView(t)
-
+        //clock.start()
 
         back_button_add_timer_window.setOnClickListener()
         {
@@ -122,10 +123,11 @@ class MainActivity : AppCompatActivity() {
         {
             addButton.visibility = View.VISIBLE
             addTimer_Window.visibility = View.INVISIBLE
-
+            if(AddTimerTimeName.text.toString()=="") AddTimerTimeName.setText(" ")
             var minute = Timer.StringNullCheck(AddTimerTimeM.text.toString()).toInt()
             var second = Timer.StringNullCheck(AddTimerTimeS.text.toString()).toInt()
             var name = AddTimerTimeName.text.toString()
+            if(second>60) second = 60
             AddTimer(timersPanel,modify_Timer_window,minute,second,name)
             data_Timer += Data_Timer(name,minute.toString(),second.toString())
             Data_Timer.SaveTimer(path, data_Timer)
@@ -159,6 +161,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 
 
     fun RemoveTimer(timersPanel: TableLayout,number: Int)

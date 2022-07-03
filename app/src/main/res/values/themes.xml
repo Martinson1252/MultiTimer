@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.MultiTimer" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#4807A5</item>
+        <item name="colorPrimary">#113E9A</item>
         <item name="colorPrimaryVariant">#113E9A</item>
         <item name="colorOnPrimary">#113E9A</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">#4807A5</item>
+        <item name="colorOnSecondary">#113E9A</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

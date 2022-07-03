@@ -84,17 +84,18 @@ class Timer(timerNumber: Int,_timeM: Int,_timeS: Int,name: String,_timersPanel: 
         M = timeM
         S = timeS
         start_button.setImageResource(R.drawable.stop_button)
+        time_display.setTextColor(Color.parseColor("#FF03A9F4"))
         buttonState = MainButtonState.STOP
+        start_button.setBackgroundResource(R.drawable.pause_round_button)
 
         var alarm: MediaPlayer
         alarm = MediaPlayer.create(context,R.raw.mixkit_alarm_buzzer_992)
         alarm.isLooping = true
 
-
         var timer = Thread{
             while(buttonState==MainButtonState.STOP)
             {
-
+                Thread.yield()
                 if(timeM>=0 && timeS>0)
                 {
                     timeS-=1
@@ -114,8 +115,12 @@ class Timer(timerNumber: Int,_timeM: Int,_timeS: Int,name: String,_timersPanel: 
                             alarm.start()
                         }
 
-                if(timeM>0||timeS>0)
-                Thread.sleep(1_000)
+                if(timeM>0 || timeS>0)
+                {
+                    Thread.sleep(1000)
+                }
+
+
             }
             timeM = M
             timeS = S
@@ -123,12 +128,15 @@ class Timer(timerNumber: Int,_timeM: Int,_timeS: Int,name: String,_timersPanel: 
             alarm.stop()
         }
 
-        timer.start()
+            timer.start()
+
+
     }
 
     fun Stoptimer()
     {
         time_display.setTextColor(Color.parseColor("#FFFFFFFF"))
+        start_button.setBackgroundResource(R.drawable.round_button)
         start_button.setImageResource(R.drawable.start_button)
         buttonState = MainButtonState.START
     }
