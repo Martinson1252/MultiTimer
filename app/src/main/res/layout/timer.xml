@@ -4,9 +4,11 @@
 <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
+    android:gravity="center|center_horizontal|center_vertical"
     android:minWidth="180dp"
     android:minHeight="160dp"
     android:outlineProvider="none"
@@ -16,10 +18,10 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="160dp"
         android:layout_height="155dp"
         android:layout_gravity="bottom"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:background="#800C0909"
         android:minWidth="50dp"
         android:orientation="vertical">
@@ -27,6 +29,7 @@
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="#737373"
             app:srcCompat="@android:drawable/ic_menu_delete" />
     </LinearLayout>
 
@@ -34,15 +37,19 @@
         android:layout_width="match_parent"
         android:layout_height="155dp"
         android:layout_gravity="bottom"
-        android:layout_weight="0"
+        android:layout_weight="3"
         android:background="#800C0909"
-        android:gravity="center_vertical"
-        android:minWidth="140dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:minWidth="170dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
+            android:autoSizeMaxTextSize="24dp"
+            android:autoSizeMinTextSize="8dp"
+            android:autoSizeStepGranularity="1dp"
+            android:autoSizeTextType="uniform"
             android:clickable="true"
             android:gravity="center"
             android:tag="name"
@@ -72,33 +79,26 @@
             android:layout_height="5dp" />
 
         <ImageButton
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_gravity="fill_horizontal"
+            android:layout_gravity="center"
+            android:layout_weight="0"
             android:background="@drawable/round_button"
+            android:maxWidth="144dp"
+            android:minWidth="144dp"
             android:src="@drawable/start_button"
-            app:tint="#FFFFFF" />
-
-        <Button
-            style="@drawable/start_button_selector"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/start_button_selector"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-
-            android:visibility="gone"
-            app:iconGravity="top"
-            tools:visibility="gone" />
+            android:visibility="visible"
+            app:tint="#FFFFFF"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:visibility="visible" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="160dp"
         android:layout_height="155dp"
         android:layout_gravity="bottom"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:background="#800C0909"
         android:gravity="right"
         android:minWidth="50dp"
@@ -107,9 +107,40 @@
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="#737373"
             android:layerType="none"
             app:srcCompat="@android:drawable/ic_menu_edit"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="00:00"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
+        <Button
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:background="@drawable/pause_round_button"
+            android:text="+15s"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
 
     </LinearLayout>
 
