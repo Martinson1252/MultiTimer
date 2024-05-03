@@ -1,6 +1,5 @@
 ## MultiTimer ##  
 Small app created with Kotlin and Android Studio.  
-User can launch multiple timers at the same time.  
 The application allows user to launch multiple timers at the same time.  
 It has basic functions for adding, removing and modifying a timer, also adding more time and shows time that passed since launching timer.  
 In addition, it saves the current list of timers to a file that is read when the application is started.  
